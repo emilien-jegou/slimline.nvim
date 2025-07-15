@@ -14,7 +14,7 @@ local M = {
     center = {},
     right = {
       'diagnostics',
-      'filetype_lsp',
+      'lsp',
       'progress',
     },
   },
@@ -86,7 +86,7 @@ local M = {
         INFO = ' ',
       },
     },
-    filetype_lsp = {
+    lsp = {
       trunc_width = 95,
       -- Map lsp client names to custom names or ignore them by setting to `false`
       -- E.g. { ['tsserver'] = 'TS', ['pyright'] = 'Python', ['GitHub Copilot'] = false }

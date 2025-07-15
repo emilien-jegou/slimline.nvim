@@ -4,7 +4,7 @@ local initialized = false
 local lsp_clients = {}
 
 local slimline = require('slimline')
-local config = slimline.config.configs.filetype_lsp
+local config = slimline.config.configs.lsp
 
 local track_lsp = vim.schedule_wrap(function(data)
   if not vim.api.nvim_buf_is_valid(data.buf) then

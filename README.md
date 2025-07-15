@@ -47,7 +47,7 @@ Here are some screenshots that might be a bit outdated. See [recipes](#recipes) 
 | path         | Filename and the relative path as well as modified / read-only info. The directory path will be truncated. Can be disabled and configured                                                       |
 | git          | Git branch and Diff infos (added, modified and removed) (requires [gitsigns](https://github.com/lewis6991/gitsigns.nvim))                                                                       |
 | diagnostics  | `vim.diagnostic` infos. This component is event driven and will not poll the information on every statusline draw.                                                                              |
-| filetype_lsp | File type and attached LSPs. Attached LSPs are evaluated event driven on LSP attach / detach events. LSP names can be mapped to custom names or disabled using `configs.filetype_lsp.map_lsps`. |
+| lsp | File type and attached LSPs. Attached LSPs are evaluated event driven on LSP attach / detach events. LSP names can be mapped to custom names or disabled using `configs.lsp.map_lsps`. |
 | progress     | File progress in %, overall number of lines as well as the cursor column                                                                                                                        |
 | recording    | Register being used when recording a macro                                                                                                                                                      |
 
@@ -124,7 +124,7 @@ require('slimline').setup {
     center = {},
     right = {
       'diagnostics',
-      'filetype_lsp',
+      'lsp',
       'progress',
     },
   },
@@ -208,7 +208,7 @@ require('slimline').setup {
         INFO = ' ',
       },
     },
-    filetype_lsp = {
+    lsp = {
       trunc_width = 95,
       -- Map lsp client names to custom names or ignore them by setting to `false`
       -- E.g. { ['tsserver'] = 'TS', ['pyright'] = 'Python', ['GitHub Copilot'] = false }
@@ -304,11 +304,11 @@ Make sure to do that **before** slimline's `setup()`.
 | SlimlineGitPrimarySep2Sec          | Git primary separator to secondary                                                               |
 | SlimlineGitSecondary               | Git secondary                                                                                    |
 | SlimlineGitSecondarySep            | Git secondary separator                                                                          |
-| SlimlineFiletype_lspPrimary        | Filetype lsp primary                                                                             |
-| SlimlineFiletype_lspPrimarySep     | Filetype lsp primary separator                                                                   |
-| SlimlineFiletype_lspPrimarySep2Sec | Filetype lsp primary separator to secondary                                                      |
-| SlimlineFiletype_lspSecondary      | Filetype lsp secondary                                                                           |
-| SlimlineFiletype_lspSecondarySep   | Filetype lsp secondary separator                                                                 |
+| SlimlinelspPrimary        | Filetype lsp primary                                                                             |
+| SlimlinelspPrimarySep     | Filetype lsp primary separator                                                                   |
+| SlimlinelspPrimarySep2Sec | Filetype lsp primary separator to secondary                                                      |
+| SlimlinelspSecondary      | Filetype lsp secondary                                                                           |
+| SlimlinelspSecondarySep   | Filetype lsp secondary separator                                                                 |
 | SlimlineProgressPrimary            | Progress primary                                                                                 |
 | SlimlineProgressPrimarySep         | Progress primary separator                                                                       |
 | SlimlineProgressPrimarySep2Sec     | Progress primary separator to secondary                                                          |
@@ -365,7 +365,7 @@ opts = {
         primary = 'Function',
       },
     },
-    filetype_lsp = {
+    lsp = {
       hl = {
         primary = 'String',
       },
@@ -392,7 +392,7 @@ opts = {
         primary = 'Function',
       },
     },
-    filetype_lsp = {
+    lsp = {
       hl = {
         primary = 'String',
       },
