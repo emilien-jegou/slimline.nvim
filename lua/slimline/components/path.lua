@@ -19,7 +19,7 @@ function C.render(opts)
 
   -- Handle unnamed buffers. For them, `expand('%:.')` returns an empty string.
   if relative_path == '' then
-    local secondary = '[No Name]'
+    local secondary = ''
     if vim.bo.modified then secondary = secondary .. ' ' end
     return slimline.highlights.hl_component(
       { primary = project_name, secondary = secondary },
