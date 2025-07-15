@@ -1,9 +1,9 @@
 local C = {}
 local initialized = false
+local slimline = require('slimline')
 
 local lsp_clients = {}
 
-local slimline = require('slimline')
 local config = slimline.config.configs.lsp
 
 local track_lsp = vim.schedule_wrap(function(data)

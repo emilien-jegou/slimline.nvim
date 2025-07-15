@@ -18,6 +18,7 @@ local function capitalize(str) return string.upper(string.sub(str, 1, 1)) .. str
 
 ---@param buf_id integer|nil
 ---@return diagnostics
+-- MODIFIED FUNCTION: This function now only counts one of each diagnostic severity per line.
 local function get_diagnostic_count(buf_id)
   local res = {
     ERROR = 0,
@@ -25,9 +26,25 @@ local function get_diagnostic_count(buf_id)
     HINT = 0,
     INFO = 0,
   }
+  -- This table will track which severities we've already counted for each line.
+  -- The structure will be: { [line_number] = { [severity_name] = true } }
+  local lines_seen = {}
+
   for _, d in ipairs(vim.diagnostic.get(buf_id)) do
     local sev = vim.diagnostic.severity[d.severity]
-    res[sev] = res[sev] + 1
+    -- The diagnostic item 'd' has an 'lnum' field for the line number (0-indexed).
+    local lnum = d.lnum
+
+    -- Ensure the table for the current line number exists.
+    if not lines_seen[lnum] then
+      lines_seen[lnum] = {}
+    end
+
+    -- If we haven't counted this severity for this line yet...
+    if not lines_seen[lnum][sev] then
+      res[sev] = res[sev] + 1      -- ...increment the count for this severity...
+      lines_seen[lnum][sev] = true -- ...and mark it as seen for this line to prevent re-counting.
+    end
   end
   return res
 end

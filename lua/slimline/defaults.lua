@@ -63,6 +63,7 @@ local M = {
         read_only = '',
       },
     },
+    lsp_spinner = {},
     git = {
       trunc_width = 120,
       icons = {
