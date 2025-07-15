@@ -1,21 +1,17 @@
 local M = {
   bold = false, -- makes primary parts bold
+  style = 'fg',
 
-  -- Global style. Can be overwritten using `configs.<component>.style`
-  style = 'bg', -- or "fg"
-
-  -- Component placement
   components = {
     left = {
       'mode',
       'path',
-      'git',
     },
     center = {},
     right = {
       'diagnostics',
       'lsp',
-      'progress',
+      'progress'
     },
   },
 
@@ -105,8 +101,8 @@ local M = {
   -- Spacing configuration
   spaces = {
     components = ' ', -- string between components
-    left = ' ', -- string at the start of the line
-    right = ' ', -- string at the end of the line
+    left = ' ',       -- string at the start of the line
+    right = ' ',      -- string at the end of the line
   },
 
   -- Seperator configuartion
@@ -121,8 +117,8 @@ local M = {
 
   -- Global highlights
   hl = {
-    base = 'Normal', -- highlight of the background
-    primary = 'Normal', -- highlight of primary parts (e.g. filename)
+    base = 'Normal',       -- highlight of the background
+    primary = 'Normal',    -- highlight of primary parts (e.g. filename)
     secondary = 'Comment', -- highlight of secondary parts (e.g. filepath)
   },
 
