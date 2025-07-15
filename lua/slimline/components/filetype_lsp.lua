@@ -1,9 +1,7 @@
 local C = {}
-local with_icons = false
 local initialized = false
 
 local lsp_clients = {}
-local MiniIcons = {}
 
 local slimline = require('slimline')
 local config = slimline.config.configs.filetype_lsp
@@ -31,9 +29,6 @@ end)
 
 local function init()
   if initialized then return end
-  local ok
-  ok, MiniIcons = pcall(require, 'mini.icons')
-  if ok then with_icons = true end
   initialized = true
 
   slimline.au({ 'LspAttach', 'LspDetach', 'BufEnter' }, '*', track_lsp, 'Track LSP')
@@ -44,15 +39,8 @@ end
 function C.render(opts)
   init()
 
-  local filetype = vim.bo.filetype
-  if filetype == '' then filetype = '[No Name]' end
-  if with_icons then
-    local icon = MiniIcons.get('filetype', filetype) --luacheck: ignore
-    filetype = icon .. ' ' .. filetype
-  end
-
   return slimline.highlights.hl_component(
-    { primary = filetype or '', secondary = lsp_clients[vim.api.nvim_get_current_buf()] or '' },
+    { primary = '', secondary = lsp_clients[vim.api.nvim_get_current_buf()] or '' },
     opts.hls,
     opts.sep,
     opts.direction,
